@@ -1,0 +1,18 @@
+version: '3.8'
+services:
+  database:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    container_name: tododb
+    environment:
+      ACCEPT_EULA: Y
+      MSSQL_SA_PASSWORD: Dan_TheJitu
+      MSSQL_PID: Developer
+    env_file:
+      - ./.env
+    ports:
+      - '1433:1433'
+    volumes:
+      - data:/var/opt/mssql
+
+volumes:
+  data:
