@@ -71,7 +71,22 @@ const updateTodo = async (req, res)=>{
 
         return res.json({message: 'Todo updated'})
     } catch (error) {
-        return res.json({error: error.message})
+        return res.json({error: error.message}) 
+    }
+}
+
+const deleteTodo = async (req, res)=>{
+    try {
+        const {id} = req.params
+        const pool = mssql.connect(sqlConfig)
+
+        (await pool).request()
+        .input('id', id)
+        .execute('deleteTodo')
+
+        return res.json({message: "todo deleted successfully"})
+    } catch (error) {
+        return res.json(error.message)
     }
 }
 
@@ -80,5 +95,6 @@ module.exports =
     insertTodo,
     getTodos,
     getOneTodo,
-    updateTodo
+    updateTodo,
+    deleteTodo
 }
