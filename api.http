@@ -2,7 +2,7 @@ POST http://localhost:4000/todos
 Content-Type: application/json
 
 {
-    "title": "My forth todo",
+    "title": "My third todo",
     "description": "This is what I will do",
     "deadline": "2023-7-13"
 }
